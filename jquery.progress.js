@@ -1,3 +1,8 @@
+/* jQuery Progress Bar Plugin - v1.0.0
+ * Copyright (c) 2015 Zeyu Feng; Licensed MIT
+ * https://github.com/clarkfbar/jquery.progress
+ * */
+
 $.fn.extend({
   Progress: function(options){
     var settings = {
