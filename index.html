@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <svg id="container"></svg>
+    <svg id="container1"></svg>
+    <svg id="container2"></svg>
+
+    <script type="text/javascript" src="http://cdn.gbtags.com/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.progress.js"></script>
+    <script type="text/javascript">
+      var progress = $("#container").Progress({
+        percent: 20,
+        width: 180,
+        height: 40,
+        fontSize: 16
+      });
+
+      var progress1 = $("#container1").Progress({
+        percent: 20,
+        width: 180,
+        height: 40,
+        fontSize: 16,
+        increaseSpeed: 2
+      });
+
+      var progress2 = $("#container2").Progress({
+        percent: 20,
+        width: 180,
+        height: 40,
+        fontSize: 16,
+        animate: false
+      });
+
+      setTimeout(function(){
+        progress.percent(90);
+        progress1.percent(90);
+        progress2.percent(90);
+      }, 4000);
+    </script>
+  </body>
+</html>
