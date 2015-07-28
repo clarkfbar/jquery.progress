@@ -108,7 +108,7 @@ $.fn.extend({
         Animate.animateWidth(currentWidth, targetWidth);
       } else {
         $bar.attr("width", targetWidth);
-        $text.empty().append(Animate.getPercent(currentWidth) + "%");
+        $text.empty().append(settings.percent + "%");
       }
     }
 
