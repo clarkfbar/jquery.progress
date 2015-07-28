@@ -6,16 +6,16 @@
 $.fn.extend({
   Progress: function(options){
     var settings = {
-      width: 90, // ½ø¶ÈÌõ¿í¶È
-      height: 20, // ½ø¶ÈÌõ¸ß¶È
-      percent: 0, // µ±Ç°Õ¼±È
-      backgroundColor: '#555', // ½ø¶ÈÌõ±³¾°ÑÕÉ«
-      barColor: '#d9534f', // ½ø¶ÈÌõÑÕÉ«
-      radius: 4, // ±ß½ÇÔ²¶È
-      fontSize: 12, // ×ÖÌå´óÐ¡
-      increaseTime: 1000.00/60.00, // Ã¿Ò»´Îµ÷Õû½ø¶ÈÌõµÄÊ±¼ä, Ä¬ÈÏ×î¼ÑÊ±¼ä(¿ÉÒÔµ÷´ó£¬²»Òªµ÷Ð¡)£»Ö»ÓÐÔÚanimateÎªtrueµÄÇé¿öÏÂÓÐÐ§
-      increaseSpeed: 1, // Ã¿´Îµ÷Õû£¬Ôö³¤ËÙ¶È£»Ö»ÓÐÔÚanimateÎªtrueµÄÇé¿öÏÂÓÐÐ§
-      animate: true // µ÷ÕûµÄÊ±ºò£¬ÊÇ·ñÊ¹ÓÃ¶¯»­Ôö³¤£¬Ä¬ÈÏÎªtrue
+      width: 90, // è¿›åº¦æ¡å®½åº¦
+      height: 20, // è¿›åº¦æ¡é«˜åº¦
+      percent: 0, // å½“å‰å æ¯”
+      backgroundColor: '#555', // è¿›åº¦æ¡èƒŒæ™¯é¢œè‰²
+      barColor: '#d9534f', // è¿›åº¦æ¡é¢œè‰²
+      radius: 4, // è¾¹è§’åœ†åº¦
+      fontSize: 12, // å­—ä½“å¤§å°
+      increaseTime: 1000.00/60.00, // æ¯ä¸€æ¬¡è°ƒæ•´è¿›åº¦æ¡çš„æ—¶é—´, é»˜è®¤æœ€ä½³æ—¶é—´(å¯ä»¥è°ƒå¤§ï¼Œä¸è¦è°ƒå°)ï¼›åªæœ‰åœ¨animateä¸ºtrueçš„æƒ…å†µä¸‹æœ‰æ•ˆ
+      increaseSpeed: 1, // æ¯æ¬¡è°ƒæ•´ï¼Œå¢žé•¿é€Ÿåº¦ï¼›åªæœ‰åœ¨animateä¸ºtrueçš„æƒ…å†µä¸‹æœ‰æ•ˆ
+      animate: true // è°ƒæ•´çš„æ—¶å€™ï¼Œæ˜¯å¦ä½¿ç”¨åŠ¨ç”»å¢žé•¿ï¼Œé»˜è®¤ä¸ºtrue
     };
     $.extend(settings, options);
 
@@ -31,18 +31,18 @@ $.fn.extend({
       }
     }        
 
-    // ¶¯»­Ïà¹Ø·½·¨
+    // åŠ¨ç”»ç›¸å…³æ–¹æ³•
     var Animate = {
       getWidth: function(){
-        // »ñÈ¡µ±Ç°µÄ¿í¶È£¬¸ù¾Ý×Ü¿í¶ÈºÍpercent
+        // èŽ·å–å½“å‰çš„å®½åº¦ï¼Œæ ¹æ®æ€»å®½åº¦å’Œpercent
         return settings.width * settings.percent / 100.00;
       },
       getPercent: function(currentWidth){
-        // ¸ù¾Ýµ±Ç°µÄ¿í¶È£¬¼ÆËãµ±Ç°µÄpercent
+        // æ ¹æ®å½“å‰çš„å®½åº¦ï¼Œè®¡ç®—å½“å‰çš„percent
         return parseInt((100 * currentWidth / settings.width).toFixed(2));
       },
       animateWidth: function(currentWidth, targetWidth){
-        // ¶¯»­Ôö³¤
+        // åŠ¨ç”»å¢žé•¿
         timeout = setTimeout(function(){
           if(currentWidth > targetWidth) {
             if(currentWidth - settings.increaseSpeed <= targetWidth) {
@@ -59,7 +59,7 @@ $.fn.extend({
           }
 
           $bar.attr("width", currentWidth);
-          $text.html(Animate.getPercent(currentWidth) + "%");
+          $text.empty().append(Animate.getPercent(currentWidth) + "%");
 
           if(currentWidth != targetWidth) {
             Animate.animateWidth(currentWidth, targetWidth);
@@ -72,7 +72,7 @@ $.fn.extend({
       return document.createElementNS("http://www.w3.org/2000/svg", tag);
     }
 
-    // ³õÊ¼»¯Ìõ¼þ
+    // åˆå§‹åŒ–æ¡ä»¶
     !!function(){
       settings.percent = progressPercent(settings.percent);
 
@@ -93,11 +93,11 @@ $.fn.extend({
       draw();
     }();
 
-    // »æÖÆ½ø¶ÈÌõ
+    // ç»˜åˆ¶è¿›åº¦æ¡
     function draw() {
       var targetWidth = Animate.getWidth();
 
-      // ÊÇ·ñÊ¹ÓÃ¶¯»­Ôö³¤
+      // æ˜¯å¦ä½¿ç”¨åŠ¨ç”»å¢žé•¿
       if(settings.animate) {
         if(timeout) {
           clearTimeout(timeout);
@@ -108,7 +108,7 @@ $.fn.extend({
         Animate.animateWidth(currentWidth, targetWidth);
       } else {
         $bar.attr("width", targetWidth);
-        $text.html(settings.percent + "%");
+        $text.empty().append(Animate.getPercent(currentWidth) + "%");
       }
     }
 
