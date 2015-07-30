@@ -12,6 +12,7 @@ var settings = {<br/>
 &nbsp;&nbsp;barColor: '#d9534f', // the color of the bar<br/>
 &nbsp;&nbsp;radius: 4, // the radius of the corner<br/>
 &nbsp;&nbsp;fontSize: 12, // the font size<br/>
+&nbsp;&nbsp;fontColor: '#fff', // the color of the number<br/?
 &nbsp;&nbsp;increaseTime: 1000.00/60.00, // the animation increase time, each increase time the bar will change increaseSpeed length<br/>
 &nbsp;&nbsp;increaseSpeed: 1, // the increase length<br/>
 &nbsp;&nbsp;animate: true // whether to use animation<br/>
