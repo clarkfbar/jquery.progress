@@ -11,6 +11,7 @@ $.fn.extend({
       percent: 0, // 当前占比
       backgroundColor: '#555', // 进度条背景颜色
       barColor: '#d9534f', // 进度条颜色
+      fontColor: '#fff', // 百分比字体颜色
       radius: 4, // 边角圆度
       fontSize: 12, // 字体大小
       increaseTime: 1000.00/60.00, // 每一次调整进度条的时间, 默认最佳时间(可以调大，不要调小)；只有在animate为true的情况下有效
@@ -88,7 +89,7 @@ $.fn.extend({
                 .attr({"fill": "#fff", "text-anchor": "middle", "font-family": "DejaVu Sans,Verdana,Geneva,sans-serif", "font-size": settings.fontSize});
 
       $text = $(svg("text")).appendTo($g)
-                .attr({"x": settings.width/2.0, "y": settings.height/2.0 + settings.fontSize/3.0});
+                .attr({"x": settings.width/2.0, "y": settings.height/2.0 + settings.fontSize/3.0, fill: settings.fontColor});
 
       draw();
     }();
